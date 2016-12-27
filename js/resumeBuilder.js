@@ -139,12 +139,10 @@ function displayProjects() {
 		var formattedProjectDates= HTMLprojectDates.replace("%data%", project.dates);
 		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.description);
 		var images = project.images;
-		// console.log(images);
 		$('.project-entry:last').append(formattedProjectTitle);
 		$('.project-entry:last').append(formattedProjectDates);
 		$('.project-entry:last').append(formattedProjectDescription);9
 		for (var j = 0; j < images.length; j++) {
-			console.log(HTMLprojectImage.replace("%data%", images[j]));
 			$(".project-entry:last").append(HTMLprojectImage.replace("%data%", images[j]));
 		}
 		
@@ -172,21 +170,34 @@ function displayEducation() {
 	var schools = education.schools;
 	schools.forEach(function (school, index, schools) {
 		$('#education').append(HTMLschoolStart);
-		var formattedSchoolName = HTMLschoolName.replace("%data%", schools.name);
-		var formattedSschoolDegree = HTMLschoolDegree.replace("%data%", schools.degree);
-		var formattedSchoolDates = HTMLschoolDates.replace("%data%", schools.dates);
-		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", schools.location);
-		schools.majors.forEach(function (major, index, majors) {
-			HTMLschoolMajor.replace("%data%", major);
+		var formattedSchoolName = HTMLschoolName.replace("%data%", school.name);
+		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%", school.dates);
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", school.location);
+		$('.education-entry:last').append(formattedSchoolName);
+		$('.education-entry:last').append(formattedSchoolDegree);
+		$('.education-entry:last').append(formattedSchoolDates);
+		$('.education-entry:last').append(formattedSchoolLocation);
+		school.majors.forEach(function (major, index, majors) {
+			$('.education-entry:last').append(HTMLschoolMajor.replace("%data%", major));
 		});
 	});
 	var onlineCourses = education.onlineCourses;
-	$('#education').append(HTMLschoolStart);
+	$('#education').append(HTMLonlineClasses);
 	for (var i = 0; i < onlineCourses.length; i++) {
-		onlineCourses[i];
+		$('#education').append(HTMLonlineStart);
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", onlineCourses[i].title);
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", onlineCourses[i].school);
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", onlineCourses[i].dates);
+		var formattedOnlineUrl = HTMLonlineURL.replace("%data%", onlineCourses[i].url);
+		$('.onlineCourses-entry:last').append(formattedOnlineTitle);
+		$('.onlineCourses-entry:last').append(formattedOnlineSchool);
+		$('.onlineCourses-entry:last').append(formattedOnlineDates);
+		$('.onlineCourses-entry:last').append(formattedOnlineUrl);
 	};
 }
-
+education.display = displayEducation();
+$("#education:last").append(education.display);
 
 
 // function display() {
