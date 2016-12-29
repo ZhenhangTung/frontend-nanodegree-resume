@@ -1,7 +1,6 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
-
 var skills = ["PHP", "Leadership"];
 
 var bio = {
@@ -171,4 +170,3 @@ education.display = displayEducation();
 $('#education:last').append(education.display);
 
 $('#mapDiv').append(googleMap);
-
