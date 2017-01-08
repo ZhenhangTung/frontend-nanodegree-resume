@@ -47,7 +47,6 @@ var projects = {
     }]
 };
 
-
 var education = {
     "schools": [{
         "name": "Fudan University",
@@ -66,7 +65,6 @@ var education = {
         "url": "https://classroom.udacity.com/courses/ud804",
     }]
 };
-
 
 function displayBio() {
     var htmlHearder = HTMLheaderName.replace("%data%", bio.name) + HTMLheaderRole.replace("%data%", bio.role);
@@ -93,8 +91,6 @@ function displayBio() {
 bio.display = displayBio();
 $('#header:last').append(bio.display);
 
-
-
 function displayWork() {
     var jobs = work.jobs;
     jobs.forEach(function(job, index, jobs) {
@@ -116,7 +112,6 @@ function displayWork() {
 work.display = displayWork();
 $('#workExperience:last').append(work.display);
 
-
 function displayProjects() {
     projects.projects.forEach(function(project, index, projects) {
         $('#projects').append(HTMLprojectStart);
@@ -135,8 +130,6 @@ function displayProjects() {
 }
 projects.display = displayProjects();
 $('#projects:last').append(projects.display);
-
-
 
 function displayEducation() {
     var schools = education.schools;
