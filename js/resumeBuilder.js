@@ -72,6 +72,7 @@ function displayBio() {
 
     var htmlContacts = HTMLmobile.replace("%data%", bio.contacts.mobile) + HTMLemail.replace("%data%", bio.contacts.email) + HTMLtwitter.replace("%data%", bio.contacts.twitter) + HTMLgithub.replace("%data%", bio.contacts.github) + HTMLlocation.replace("%data%", bio.contacts.location);
     $('#topContacts').append(htmlContacts);
+    $('#footerContacts').append(htmlContacts);
 
     var bioPic = HTMLbioPic.replace("%data%", bio.bioPic);
     var welcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
@@ -102,6 +103,8 @@ function displayWork() {
 
         var formattedDates = HTMLworkDates.replace("%data%", job.dates);
         $(".work-entry:last").append(formattedDates);
+        var formattedWorkLocation = HTMLworkLocation.replace("%data%", job.location);
+        $(".work-entry:last").append(formattedWorkLocation);
 
 
         var formattedDescriptions = HTMLworkDescription.replace("%data%", job.description);
@@ -139,9 +142,11 @@ function displayEducation() {
         var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
         var formattedSchoolDates = HTMLschoolDates.replace("%data%", school.dates);
         var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", school.location);
+        var formattedSchoolUrl = HTMLschoolURL.replace("%data%", school.url);
         $('.education-entry:last').append(formattedSchoolName + formattedSchoolDegree);
         $('.education-entry:last').append(formattedSchoolDates);
         $('.education-entry:last').append(formattedSchoolLocation);
+        $('.education-entry:last').append(formattedSchoolUrl);
         school.majors.forEach(function(major, index, majors) {
             $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", major));
         });
@@ -163,3 +168,4 @@ education.display = displayEducation();
 $('#education:last').append(education.display);
 
 $('#mapDiv').append(googleMap);
+
