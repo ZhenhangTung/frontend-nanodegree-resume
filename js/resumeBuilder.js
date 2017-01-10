@@ -15,7 +15,7 @@ var bio = {
     },
     "welcomeMessage": "Welcme!",
     "skills": skills,
-    "bioPic": "images/me.jpg"
+    "biopic": "images/me.jpg"
 };
 
 var work = {
@@ -66,15 +66,14 @@ var education = {
     }]
 };
 
-function displayBio() {
+bio.display = function displayBio() {
     var htmlHearder = HTMLheaderName.replace("%data%", bio.name) + HTMLheaderRole.replace("%data%", bio.role);
     $('#header').prepend(htmlHearder);
 
     var htmlContacts = HTMLmobile.replace("%data%", bio.contacts.mobile) + HTMLemail.replace("%data%", bio.contacts.email) + HTMLtwitter.replace("%data%", bio.contacts.twitter) + HTMLgithub.replace("%data%", bio.contacts.github) + HTMLlocation.replace("%data%", bio.contacts.location);
-    $('#topContacts').append(htmlContacts);
-    $('#footerContacts').append(htmlContacts);
+    $('#topContacts, #footerContacts').append(htmlContacts);
 
-    var bioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+    var bioPic = HTMLbioPic.replace("%data%", bio.biopic);
     var welcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $('#header').append(bioPic);
     $('#header').append(welcomeMsg);
@@ -89,10 +88,9 @@ function displayBio() {
 
     }
 }
-bio.display = displayBio();
-$('#header:last').append(bio.display);
+bio.display();
 
-function displayWork() {
+work.display = function displayWork() {
     var jobs = work.jobs;
     jobs.forEach(function(job, index, jobs) {
         $("#workExperience").append(HTMLworkStart);
@@ -112,10 +110,9 @@ function displayWork() {
     });
 }
 
-work.display = displayWork();
-$('#workExperience:last').append(work.display);
+work.display();
 
-function displayProjects() {
+projects.display = function displayProjects() {
     projects.projects.forEach(function(project, index, projects) {
         $('#projects').append(HTMLprojectStart);
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.title);
@@ -131,10 +128,9 @@ function displayProjects() {
 
     });
 }
-projects.display = displayProjects();
-$('#projects:last').append(projects.display);
+projects.display();
 
-function displayEducation() {
+education.display = function displayEducation() {
     var schools = education.schools;
     schools.forEach(function(school, index, schools) {
         $('#education').append(HTMLschoolStart);
@@ -164,8 +160,7 @@ function displayEducation() {
         $('.onlineCourses-entry:last').append(formattedOnlineUrl);
     }
 }
-education.display = displayEducation();
-$('#education:last').append(education.display);
+education.display();
 
 $('#mapDiv').append(googleMap);
 
