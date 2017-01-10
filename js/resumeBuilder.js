@@ -155,9 +155,9 @@ education.display = function displayEducation() {
         var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", onlineCourses[i].school);
         var formattedOnlineDates = HTMLonlineDates.replace("%data%", onlineCourses[i].dates);
         var formattedOnlineUrl = HTMLonlineURL.replace("%data%", onlineCourses[i].url);
-        $('.onlineCourses-entry:last').append(formattedOnlineTitle + formattedOnlineSchool);
-        $('.onlineCourses-entry:last').append(formattedOnlineDates);
-        $('.onlineCourses-entry:last').append(formattedOnlineUrl);
+        $('.online-courses-entry:last').append(formattedOnlineTitle + formattedOnlineSchool);
+        $('.online-courses-entry:last').append(formattedOnlineDates);
+        $('.online-courses-entry:last').append(formattedOnlineUrl);
     }
 }
 education.display();
